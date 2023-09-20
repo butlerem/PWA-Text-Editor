@@ -16,7 +16,7 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: './index.html',
         filename: 'index.html',
         chunks: ['main']
       }),
@@ -24,7 +24,7 @@ module.exports = () => {
         name: 'My Progressive Web App',
         short_name: 'MyPWA',
         description: 'A Progressive Web App',
-        background_color: 'fafffc',
+        background_color: '#ffffff',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
