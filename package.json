@@ -4,13 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "",
-    "start": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
-    "server": "",
-    "build": "cd client && webpack --config webpack.config.js",
-    "install": "",
-    "client": ""
+    "start": "node server/server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "start:dev": "nodemon server/server.js",
+    "build": "cd client && npm run build",
+    "install": "npm i && cd client && npm i",
+    "client": "cd client && npm start",
+    "server": "node server/server.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,9 @@
     "node": "v12.22.9",
     "webpack": "^5.88.2"
   },
+  "engines": {
+    "node": "12.x"
+  },  
   "devDependencies": {
     "concurrently": "^5.3.0",
     "nodemon": "^2.0.4"
