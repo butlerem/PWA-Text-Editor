@@ -22,21 +22,25 @@ export default class {
       tabSize: 2,
     });
 
-    // When the editor is ready, set the value to whatever is stored in indexeddb.
-    // Fall back to localStorage if nothing is stored in indexeddb, and if neither is available, set the value to header.
+    // Populate the editor with data from IndexedDB if available, else from localStorage
     getDb().then((data) => {
-      console.info('Loaded data from IndexedDB, injecting into editor');
-      this.editor.setValue(data || localData || header);
-    });
+      if (data && data.length > 0) {
+        console.info('Loaded data from IndexedDB, injecting into editor');
+        this.editor.setValue(data[data.length - 1].content || localData || header);
+      } else {
+        this.editor.setValue(localData || header);
+      }
+    }).catch(err => console.error("Error fetching from IndexedDB: ", err));
 
+    // Save to localStorage on each change
     this.editor.on('change', () => {
       localStorage.setItem('content', this.editor.getValue());
     });
 
-    // Save the content of the editor when the editor itself is loses focus
-    this.editor.on('blur', () => {
+    // Save to IndexedDB when the editor loses focus
+    this.editor.on('blur', async () => {
       console.log('The editor has lost focus');
-      putDb(localStorage.getItem('content'));
+      await putDb(this.editor.getValue());
     });
   }
 }
