@@ -2,7 +2,7 @@
   "name": "JATE",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build src/js/index.js"
   },
   "author": "2U",
   "license": "UNLICENSED",
