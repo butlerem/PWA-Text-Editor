@@ -8,9 +8,9 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
-- [Contributions](#contributions)
-- [Licensing](#licensing)
-- [Acknowledgments](#acknowledgments)
+- [License](#license)
+- [Credits](#credits)
+- [Questions](#questions)
 
 ## Overview
 
