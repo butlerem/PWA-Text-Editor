@@ -2,11 +2,10 @@
   "name": "JATE",
   "scripts": {
     "start": "node server/server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "npm install && npm run build",
     "start:dev": "nodemon server/server.js",
-    "build": "cd client && npm run build",
-    "postinstall": "cd client && npm install",
-    "client": "cd client && npm start",
+    "build": "npm run build",
+    "client": "npm start",
     "server": "node server/server.js"
   },
   "author": "2U",
