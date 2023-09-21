@@ -1,4 +1,4 @@
- PWA Text Editor
+# PWA Text Editor
 
 ![Screenshot from 2023-09-20 23-57-40](https://github.com/butlerem/PWA-Text-Editor/assets/130527417/bfc01727-caa6-44b0-ae37-7fca81630477)
 
