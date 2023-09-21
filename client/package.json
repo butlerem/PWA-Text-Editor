@@ -1,8 +1,9 @@
 {
   "name": "JATE",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build src/js/index.js"
+    "dev": "webpack-dev-server",
+    "build": "webpack --mode production",
+    "start": "webpack --watch"
   },
   "author": "2U",
   "license": "UNLICENSED",

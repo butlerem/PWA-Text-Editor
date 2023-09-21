@@ -17,42 +17,52 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        filename: 'index.html',
-        chunks: ['main']
+        title: 'Just Another Text Editor',
+      }),
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest({
-        name: 'My Progressive Web App',
-        short_name: 'MyPWA',
-        description: 'A Progressive Web App',
-        background_color: '#ffffff',
+        fingerprints: false,
+        inject: true,
+        name: 'Just Another Text Editor',
+        short_name: 'JATE',
+        description:
+          'text editor that runs in the browser and functions offline',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: '/',
+        publicPath: '/',
         icons: [
           {
             src: path.resolve('./src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512]
           }
-        ]
+        ],
       }),
-      new InjectManifest({
-        swSrc: './src-sw.js'
-      })
     ],
-
+    
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
-            }
-          }
+              presets: ['@babel/preset-env'],
+              plugins: [
+                '@babel/plugin-proposal-object-rest-spread',
+                '@babel/transform-runtime',
+              ],
+            },
+          },
         },
-        {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader']
-        }
       ],
     },
   };
